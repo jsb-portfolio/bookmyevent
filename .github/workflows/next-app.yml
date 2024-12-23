@@ -1,0 +1,46 @@
+name: Next App Build
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Check out the code
+      - uses: actions/checkout@v4
+      # Step 2: Install pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false # disable pnpm install for using pnpm cache
+      
+      # Step 3: Install Node.js and cache dependencies
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: "pnpm"
+          cache-dependency-path: pnpm-lock.yaml
+      # Step 4: Install dependencies
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile --shamefully-hoist
+      # Step 5: Build
+      - name: Build
+        env:
+          GOOGLE_CLIENT_ID: test
+          GOOGLE_CLIENT_SECRET: test
+          GITHUB_CLIENT_ID: test
+          GITHUB_CLIENT_SECRET: test
+        run: pnpm run build
+      # Step 6: Upload build artifacts
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: next_build_output
+          include-hidden-files: true
+          path: |
+            .next
+            src/server.js
+            node_modules

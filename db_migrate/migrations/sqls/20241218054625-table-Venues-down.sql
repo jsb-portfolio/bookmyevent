@@ -1,0 +1,2 @@
+DROP VIEW IF EXISTS public_venues;
+DROP TABLE IF EXISTS venues CASCADE;

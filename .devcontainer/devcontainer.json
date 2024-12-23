@@ -1,0 +1,28 @@
+{
+    "name": "next-app",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"postCreateCommand": ".devcontainer/postCreateCommand.sh",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "biomejs.biome", //Biome
+                "wallabyjs.console-ninja", //Console Ninja for console.log() next to code
+                "formulahendry.auto-rename-tag", //Auto Rename Tag
+                "cardinal90.multi-cursor-case-preserve", //Multi Cursor Case Preserve
+                "dsznajder.es7-react-js-snippets", // React Snippets
+                "bradlc.vscode-tailwindcss" //Tailwind
+            ]
+        }
+    },
+	"shutdownAction": "stopCompose",
+    // Needed docker outside of docker feature to work compose
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			"version": "latest",
+			"enableNonRootDocker": "true",
+			"moby": "true"
+		}
+	}
+}

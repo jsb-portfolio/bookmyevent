@@ -1,0 +1,13 @@
+{
+	"defaultEnv": "pg",
+	"pg": {
+		"driver": "pg",
+		"host": { "ENV": "DB_HOST" },
+		"user": { "ENV": "POSTGRES_USER" },
+		"password": { "ENV": "POSTGRES_PASSWORD" },
+		"database": { "ENV": "POSTGRES_DB" }
+	},
+
+	"sql-file": true,
+	"migrations-dir": "migrations"
+}

@@ -1,0 +1,10 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* DaisyUI Classes */
+.input:focus-within {
+  border-color: #3b82f6; /* Apply blue border color on focus (blue-500) */
+  border-width: 3px; /* Increase border width to make it bold */
+  outline: none; /* Remove default outline */
+}

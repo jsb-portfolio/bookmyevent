@@ -1,0 +1,31 @@
+volumes:
+  postgres-data:
+
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/typescript-node:22-bookworm
+    
+    env_file:
+      - ../.env
+    environment:
+      - TZ=America/Vancouver
+
+    volumes:
+      # Forwards the local Docker socket to the container.
+      # Needed docker outside of docker feature to work compose
+      - /var/run/docker.sock:/var/run/docker-host.sock 
+      # Update this to wherever you want VS Code to mount the folder of your project
+      - ../..:/workspaces:cached
+    network_mode: host
+
+    # Overrides default command so things don't shut down after the process ends.
+    entrypoint: /usr/local/share/docker-init.sh
+    command: sleep infinity
+
+  postgres:
+    image: postgres:latest
+    env_file:
+      - ../.env
+    volumes:
+      - postgres-data:/var/lib/postgresql/data # Mount volume to persist PostgreSQL data
+    network_mode: host
