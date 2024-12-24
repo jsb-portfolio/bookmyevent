@@ -8,12 +8,12 @@ export default async function Venue({ id, name, address, showEditAndDelete }) {
 	try {
 		// 1. Determine the directory path
 		const relativeUploadDir = join('uploads', 'venues', id) // Relative to the 'public' directory
-		const uploadDir = join(process.cwd(), 'public', relativeUploadDir)
+		const uploadDir = join(process.cwd(), '.data', relativeUploadDir)
 
 		// 2. Read the directory contents
 		const filenames = await readdir(uploadDir)
 		for (const filename of filenames) {
-			imagePaths.push(join('/uploads', 'venues', id, filename))
+			imagePaths.push(join(uploadDir, filename))
 		}
 	} catch (error) {
 		imagePaths.push(join('/no-image.jpg'))

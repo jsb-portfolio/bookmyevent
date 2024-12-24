@@ -44,4 +44,5 @@ jobs:
           path: |
             .next
             src/server.js
+            public
             node_modules

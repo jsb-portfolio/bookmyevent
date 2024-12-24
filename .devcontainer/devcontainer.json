@@ -12,6 +12,7 @@
                 "formulahendry.auto-rename-tag", //Auto Rename Tag
                 "cardinal90.multi-cursor-case-preserve", //Multi Cursor Case Preserve
                 "dsznajder.es7-react-js-snippets", // React Snippets
+				"cweijan.vscode-database-client2", // db client
                 "bradlc.vscode-tailwindcss" //Tailwind
             ]
         }

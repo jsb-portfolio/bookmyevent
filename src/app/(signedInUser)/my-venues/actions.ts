@@ -29,7 +29,7 @@ export async function addNewVenue(formData: FormData) {
 
             // 1. Determine the directory path
             const relativeUploadDir = join('uploads', 'venues', venueId); // Relative to the 'public' directory
-            const uploadDir = join(process.cwd(), 'public', relativeUploadDir);
+            const uploadDir = join(process.cwd(), '.data', relativeUploadDir);
 
             // 2. Create the directory if it doesn't exist
             await mkdir(uploadDir, { recursive: true });
@@ -63,7 +63,7 @@ export async function deleteVenue(formData: FormData) {
 
         // 1. Determine the directory path
         const relativeUploadDir = join('uploads', 'venues', id); // Relative to the 'public' directory
-        const uploadDir = join(process.cwd(), 'public', relativeUploadDir);
+        const uploadDir = join(process.cwd(), '.data', relativeUploadDir);
 
         await rm(uploadDir, { recursive: true, force: true });
         await client.query('COMMIT')
