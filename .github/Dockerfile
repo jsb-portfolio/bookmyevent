@@ -11,6 +11,6 @@ COPY artifacts/next_build_output /app/
 RUN chown -R 1000:1000 /app
 USER 1000
 
-ENV NODE_ENV=production
+# ENV NODE_ENV=production
 
-CMD ["node", "src/server.js"]
+CMD ["pnpm run dev"]
