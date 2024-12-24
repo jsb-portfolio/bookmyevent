@@ -13,4 +13,4 @@ USER 1000
 
 # ENV NODE_ENV=production
 
-CMD ["pnpm run dev"]
+CMD ["npm run dev"]
